@@ -20,23 +20,22 @@ func (u *user) notify() {
 }
 
 type admin struct {
-	name string
-	emai string
-}
-
-func (a *admin) notify() {
-	fmt.Printf("Send mail for admin: %s<%s>\n",
-		a.name,
-		a.emai)
+	user  // Embedded type.
+	level string
 }
 
 func main() {
-	u := user{"Logan", "hs.lee.login@gmail.com"}
-	// pointer, becouse notify() use pointer receiver
-	sendNotification(&u)
+	a := admin{
+		user:  user{"Logan", "hs.lee.login@gmail.com"},
+		level: "super",
+	}
+	// Access inner type method directly.
+	a.user.notify()
 
-	a := admin{"Hyunsuk", "blackknight8012@gmail.com"}
-	// pointer, becouse notify() use pointer receiver
+	// Inner type method is promoted.
+	a.notify()
+
+	// Interface is promoted.
 	sendNotification(&a)
 }
 
