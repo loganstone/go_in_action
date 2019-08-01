@@ -6,7 +6,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/goinaction/code/chapter9/listing17/handlers"
+	"github.com/loganstone/go_in_action/endpointtest/handlers"
 )
 
 const checkMark = "\u2713"
